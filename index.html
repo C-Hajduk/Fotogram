@@ -9,18 +9,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="loadImages()">
+<body onload="renderImg()">
 
     <header class="header">
         <img class="logoImg" src="./assets/Logo/Fotogram_Logo.svg" alt="Fotogram Logo">
     </header>
-    <main class="mainDisplay">
-        <h1>Your personal photo album</h1>
-        <section id="dropImg" class="layoutImg"></section>
-        <div onclick="toggleOverlay()" id="bigImgOverlay" class="overlay d_none">
 
-        </div>
+    <main class="mainDisplay">
+
+        <h1>Your personal photo album</h1>
+        <!-- Bilder sollen in section eingefügt werden -->
+        <div id="imageGallery"></div>
+
+        <!-- die Bilder sollen ein HoverEffect erhalten -->
+
+        <!-- ein Dialog soll sich öffnen -->
+        <!-- Dialog soll gerendert sein -->
+        <dialog id="dialog">
+            <header>
+                <h2></h2> <!-- hier soll der Name des Bildes rein -->
+                <button onclick="closeDialog()">❌</button> <!-- mit diesem Button wird der Dialog geschlossen -->
+            </header>
+            <section>Big Picture></section>
+            <footer>
+                <button onclick="forwardImg()">Forward</button> <!-- Button zum vorwärts swipen -->
+                <span>Counter</span> <!-- Die Anzahl der Bilder sollte ihn Zahlen angezeigt werden -->
+                <button onclick="backImg()">Back</button> <!-- Button zum rückwärts swipen -->
+            </footer>
+        </dialog>
+
+
+
+        <!-- sobald ich beim letzten Bild bin, kann ich direkt auf das erste schalten und umgekehrt  -->
+        <!-- ich kann ausserhalb des Dialog klicken und der Dialog schliesst sich -->
+
     </main>
+
     <footer class="footer">
         <img src="" alt="">
         <p>create by Christian 2025</p>
