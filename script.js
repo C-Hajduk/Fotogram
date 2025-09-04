@@ -16,16 +16,20 @@ const imgArray = [
   "assets/img/20230405_152108.jpg",
 ];
 
+let imgArrayindex = 0;
+
 // ======================= img bilder in HTMl erstellen ===============================
 
-// ======================= render Funktion ==================================
+// ======================= render Funktion & Template ==================================
 
 function renderImg() {
   let imageGalleryRef = document.getElementById("imageGallery");
   imageGalleryRef.innerHTML = "";
 
   for (let index = 0; index < imgArray.length; index++) {
-    imageGalleryRef.innerHTML += `<img class="thumbnailGallery" src="${imgArray[index]}" alt="">`;
+    imageGalleryRef.innerHTML += `<img onclick="openDialog(${[
+      index,
+    ]})" class="thumbnailGallery" src="${imgArray[index]}" alt="">`;
   }
 }
 
@@ -36,7 +40,13 @@ function renderDialog() {
 }
 
 // per click auf das Bild, öffnet sich ein dialog
-function openDialog() {
+function openDialog(index) {
+  let dialog = document.getElementById("dialog");
+  dialog.showModal();
+
+  let bigPicture = document.getElementById("bigPicture");
+  bigPicture.innerHTML += `<img src="${imgArray[index]}" alt="">`;
+
   // wenn ich auf das img klicke, dann öffnet sich der Dialog
   // ansonsten kann ich den Dialog nicht oeffnen
 }
@@ -53,6 +63,7 @@ function bubbling() {}
 
 function forwardImg() {
   // wenn ich den button klicke, dann swipe ich nach links
+  // was ist mein vorheriges Bild -> globale variable
 }
 
 function backImg() {

@@ -9,7 +9,7 @@
 }
 
 .header {
-    background-color: rgba(68, 60, 60, 0.281);
+    background-color: #004F51;
     padding: 8px;
 }
 
@@ -21,12 +21,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: ; */
+    background-color: #F7E4C3;
 }
 
 .mainDisplay h1 {
     font-size: 40px;
     padding: 20px;
+    color: #004F51;
 }
 
 .thumbnailGallery {
@@ -34,20 +35,21 @@
     width: 200px;
 }
 
-
-
-
-
-
-
-
+.dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #F7E4C3;
+}
 
 
 .footer {
     display: flex;
     justify-content: center;
-    background-color: rgba(68, 60, 60, 0.281);
+    background-color:  #004F51;
     padding: 8px;
-    color: white;
+    color: #F7E4C3;
     font-weight: 700;
 }
