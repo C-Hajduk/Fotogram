@@ -1,4 +1,3 @@
-// Array mit Bild-URLs
 let imgArray = [
   "assets/img/20230331_102806.jpg",
   "assets/img/20230331_102941.jpg",
@@ -34,21 +33,33 @@ let bigImgArray = [
   "assets/img/20230405_150408.jpg",
   "assets/img/20230405_152108.jpg",
 ];
-function loadImages() {
-  let dropImg = document.getElementById("dropImg");
-  // 2. Bilder im LocalStorage speichern
-  //    -> wir wandeln das Array in einen String um
-  localStorage.setItem("dropImg", JSON.stringify(imgArray));
-  // 3. Bilder wieder aus LocalStorage abrufen
-  let saveImg = JSON.parse(localStorage.getItem("myImg"));
 
-  if (saveImg && saveImg.lengt > 0) {
-    for (let index = 0; index < saveImg.length; index++) {
-      let img = document.createElement("img");
-      img.src = saveImg[i];
-      img.alt = "japanBilder";
-      img.classList.add(`img-${i + 1}`);
-      dropImg.appendChild(img);
+function loadImages() {
+  let images;
+
+  if (localStorage.getItem("images")) {
+    images = JSON.parse(localStorage.getItem("images"));
+  } else {
+    localStorage.setItem("images", JSON.stringify(imgArray));
+    images = imgArray;
+  }
+
+  render(images);
+
+  function render(images) {
+    let dropImg = document.getElementById("dropImg");
+    dropImg.innerHTML = "";
+
+    if (images && images.length > 0) {
+      for (let index = 0; index < images.length; index++) {
+        let img = document.createElement("img");
+        img.src = images[index];
+        img.alt = "japanBild" + (index + 1);
+        img.loading = "charge";
+        img.style.width = "300px";
+        img.style.margin = "5px";
+        dropImg.appendChild(img);
+      }
     }
   }
 }
