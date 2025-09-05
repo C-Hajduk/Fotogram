@@ -18,27 +18,28 @@
     <main id="mainDisplay" class="mainDisplay">
 
         <h1>Your personal photo album</h1>
+        <!-- Bilder sollen in section eingefügt werden -->
         <div id="imageGallery"></div>
 
         <!-- die Bilder sollen ein HoverEffect erhalten -->
-        <div id="displayDialog">
-            <dialog id="dialog" class="dialog">
-                <header>
-                    <h2>Japan Bilder</h2> <!-- hier soll der Name des Bildes rein -->
-                    <button aria-label="dialogClose" class="btnClose" onclick="closeDialog()">❌</button>
 
-                </header>
+        <dialog id="dialog" class="dialog">
+            <header>
+                <h2>Japan Bilder</h2> <!-- hier soll der Name des Bildes rein -->
+                <button aria-label="dialogClose" class="btnClose" onclick="closeDialog()">❌</button>
 
-                <section id="bigPicture" class="bigPicture">Big Picture></section>
+            </header>
 
-                <footer>
-                    <button onclick="forwardImg()">Forward</button>
-                    <span id="counter"></span>
-                    <button onclick="backImg()">Back</button>
-                </footer>
-            </dialog>
+            <section id="bigPicture" class="bigPicture">Big Picture></section>
 
-        </div>
+            <footer>
+                <button onclick="forwardImg()">Forward</button>
+                <span id="counter"></span>
+                <button onclick="backImg()">Back</button>
+            </footer>
+        </dialog>
+
+
 
         <!-- ich kann ausserhalb des Dialog klicken und der Dialog schliesst sich -->
 
