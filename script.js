@@ -1,19 +1,19 @@
 const imgArray = [
-  "assets/img/20230331_102806.jpg",
-  "assets/img/20230331_102941.jpg",
-  "assets/img/20230331_154828.jpg",
-  "assets/img/20230402_102032.jpg",
-  "assets/img/20230402_155314.jpg",
-  "assets/img/20230403_152724.jpg",
-  "assets/img/20230403_154436.jpg",
-  "assets/img/20230403_204057.jpg",
-  "assets/img/20230404_103648.jpg",
-  "assets/img/20230404_125938.jpg",
-  "assets/img/20230404_155440.jpg",
-  "assets/img/20230404_161925.jpg",
-  "assets/img/20230405_105337.jpg",
-  "assets/img/20230405_150408.jpg",
-  "assets/img/20230405_152108.jpg",
+  "assets/img/Aussicht_Kirschblüten.jpg",
+  "assets/img/Bonsai_Tempel.jpg",
+  "assets/img/Fluss_Kirschblüten.jpg",
+  "assets/img/Fuji.jpg",
+  "assets/img/Gasshō-Zukuri-Haus.jpg",
+  "assets/img/Gedenken_Schrein.jpg",
+  "assets/img/Jigokudani Affenpark.jpg",
+  "assets/img/Jizō-Statuen.jpg",
+  "assets/img/Lichterspiel_Wald.jpg",
+  "assets/img/Matcha_Tee.jpg",
+  "assets/img/Mini_Wasserfall.jpg",
+  "assets/img/Schrein_Garten.jpg",
+  "assets/img/Tempel hinter Kirschblüten.jpg",
+  "assets/img/Tempel_Statue.jpg",
+  "assets/img/Weg_zum_Gedenken_Schrein.jpg",
 ];
 
 let imgArrayindex = 0;
@@ -46,6 +46,12 @@ function openDialog(index) {
   let counterRef = document.getElementById("counter");
   counterRef.textContent = imgArrayindex + 1 + " / " + imgArray.length;
 
+  let headlineRef = document.getElementById("headerDialog");
+
+  let pathParts = imgArray[imgArrayindex].split("/");
+  let filename = pathParts[pathParts.length - 1];
+  headlineRef.textContent = filename;
+
   dialog.addEventListener("click", function (event) {
     if (event.target === dialog) {
       closeDialog();
@@ -64,6 +70,7 @@ function closeDialog() {
 
 // Klick außerhalb des Bildes -> Overlay schließen
 function bubbling() {}
+
 // ====================== vorwärts swipen ===============================
 
 function forwardImg() {
@@ -73,8 +80,6 @@ function forwardImg() {
     imgArrayindex = 0; //zurück zum Bild
   }
   openDialog(imgArrayindex); // neues Bild anzeigen
-
-  // was ist mein vorheriges Bild -> globale variable
 }
 
 // ====================== rückwärts swipen ===============================
