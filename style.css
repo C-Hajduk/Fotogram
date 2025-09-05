@@ -39,9 +39,9 @@
     border: 5px #004F51;
     background-color: #F7E4C3;
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
+    top: 10%;
+    left: 10%;
+    height: 75%;
     width: 50%;
 }
 

@@ -25,30 +25,31 @@ function renderImg() {
   imageGalleryRef.innerHTML = "";
 
   for (let index = 0; index < imgArray.length; index++) {
-    imageGalleryRef.innerHTML += `<img onclick="openDialog(${[
-      index,
-    ]})" class="thumbnailGallery" src="${imgArray[index]}" alt="">`;
+    imageGalleryRef.innerHTML += `<img onclick="openDialog(${index})" 
+                                      class="thumbnailGallery" 
+                                      src="${imgArray[index]}" alt="">`;
   }
 }
 
 // ==================== Dialog öffnen ==================================
 
 function openDialog(index) {
-  let dialog = document.getElementById("dialog");
-  dialog.showModal();
+  // renderDialog(index);
+  let dialogRef = document.getElementById("dialog");
+  dialogRef.showModal();
 
   let bigPicture = document.getElementById("bigPicture");
   bigPicture.innerHTML = `<img src="${imgArray[index]}" alt="">`;
 
   // Zähler (z.B. "3 / 15")
   let counterRef = document.getElementById("counter");
-  counterRef.textContent = imgArrayindex + 1 + " / " + imgArray.length;
+  counterRef.innerHTML = index + 1 + " / " + imgArray.length;
 
-  dialog.addEventListener("click", function (event) {
-    if (event.target === dialog) {
-      closeDialog();
-    }
-  });
+  // dialog.addEventListener("click", function (event) {
+  //   if (event.target === dialog) {
+  //     closeDialog();
+  //   }
+  // });
 }
 
 // ======================= Dialog schließen ============================
@@ -60,29 +61,47 @@ function closeDialog() {
 
 // ======================= Bubbling Funktion ============================
 
-// Klick außerhalb des Bildes -> Overlay schließen
 function bubbling() {}
+
 // ====================== vorwärts swipen ===============================
 
-function forwardImg() {
-  imgArrayindex++; // index erhöhen - wir wollen zum nächsten Bild springen
-  if (imgArrayindex >= imgArray.length) {
+function forwardImg(index) {
+  index++; // index erhöhen - wir wollen zum nächsten Bild springen
+  if (index >= imgArray.length) {
     // wenn der Index gleich der Länge des Arrays ist,haben wir das Ende überschritten. Dann setzen wir auf 0
-    imgArrayindex = 0; //zurück zum Bild
+    index = 0; //zurück zum Bild
   }
-  openDialog(imgArrayindex); // neues Bild anzeigen
-
-  // was ist mein vorheriges Bild -> globale variable
+  openDialog(index); // neues Bild anzeigen
 }
 
 // ====================== rückwärts swipen ===============================
 
-function backImg() {
-  imgArrayindex--;
-  if (imgArrayindex < 0) {
-    imgArrayindex = imgArray.length - 1; // zurück zum letzen Bild
+function backImg(index) {
+  index--;
+  if (index < 0) {
+    index = imgArray.length - 1; // zurück zum letzen Bild
   }
-  openDialog(imgArrayindex);
+  openDialog(index);
 }
 
 // ============================================================================
+
+function renderDialog(index) {
+  let displayDialogRef = document.getElementById("displayDialog");
+  displayDialogRef = "";
+  displayDialogRef.innerHTML = `<dialog id="dialog" class="dialog">
+            <header>
+                <h2>Japan Bilder</h2> <!-- hier soll der Name des Bildes rein -->
+                <button aria-label="dialogClose" class="btnClose" onclick="closeDialog()">❌</button>
+
+            </header>
+
+            <section id="bigPicture" class="bigPicture">Big Picture></section>
+
+            <footer>
+                <button onclick="forwardImg(${index})">Forward</button>
+                <span id="counter"></span>
+                <button onclick="backImg(${index})">Back</button>
+            </footer>
+        </dialog>`;
+}
