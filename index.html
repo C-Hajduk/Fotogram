@@ -18,29 +18,26 @@
     <main class="mainDisplay">
 
         <h1>Your personal photo album</h1>
-        <!-- Bilder sollen in section eingefügt werden -->
         <div id="imageGallery"></div>
 
         <!-- die Bilder sollen ein HoverEffect erhalten -->
 
-        <!-- ein Dialog soll sich öffnen -->
-        <!-- Dialog soll gerendert sein -->
         <dialog id="dialog" class="dialog">
             <header>
-                <h2></h2> <!-- hier soll der Name des Bildes rein -->
-                <button onclick="closeDialog()">❌</button> <!-- mit diesem Button wird der Dialog geschlossen -->
+                <h2>Japan Bilder</h2> <!-- hier soll der Name des Bildes rein -->
+                <button aria-label="dialogClose" class="btnClose" onclick="closeDialog()">❌</button>
+
             </header>
-            <section id="bigPicture">Big Picture></section>
+
+            <section id="bigPicture" class="bigPicture">Big Picture></section>
+
             <footer>
-                <button onclick="forwardImg()">Forward</button> <!-- Button zum vorwärts swipen -->
-                <span>Counter</span> <!-- Die Anzahl der Bilder sollte ihn Zahlen angezeigt werden -->
-                <button onclick="backImg()">Back</button> <!-- Button zum rückwärts swipen -->
+                <button onclick="forwardImg()">Forward</button>
+                <span id="counter">Bild</span>
+                <button onclick="backImg()">Back</button>
             </footer>
         </dialog>
 
-
-
-        <!-- sobald ich beim letzten Bild bin, kann ich direkt auf das erste schalten und umgekehrt  -->
         <!-- ich kann ausserhalb des Dialog klicken und der Dialog schliesst sich -->
 
     </main>

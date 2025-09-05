@@ -18,8 +18,6 @@ const imgArray = [
 
 let imgArrayindex = 0;
 
-// ======================= img bilder in HTMl erstellen ===============================
-
 // ======================= render Funktion & Template ==================================
 
 function renderImg() {
@@ -33,41 +31,58 @@ function renderImg() {
   }
 }
 
-// ==================== Overlay für das Popup ==================================
+// ==================== Dialog öffnen ==================================
 
-function renderDialog() {
-  // fuers rendern des Dialog
-}
-
-// per click auf das Bild, öffnet sich ein dialog
 function openDialog(index) {
   let dialog = document.getElementById("dialog");
   dialog.showModal();
 
   let bigPicture = document.getElementById("bigPicture");
-  bigPicture.innerHTML += `<img src="${imgArray[index]}" alt="">`;
+  bigPicture.innerHTML = `<img src="${imgArray[index]}" alt="">`;
 
-  // wenn ich auf das img klicke, dann öffnet sich der Dialog
-  // ansonsten kann ich den Dialog nicht oeffnen
+  // Zähler (z.B. "3 / 15")
+  let counterRef = document.getElementById("counter");
+  counterRef.textContent = imgArrayindex + 1 + " / " + imgArray.length;
+
+  dialog.addEventListener("click", function (event) {
+    if (event.target === dialog) {
+      closeDialog();
+    }
+  });
 }
 
-// Klick auf OverlayButton = schließen
+// ======================= Dialog schließen ============================
+
 function closeDialog() {
-  // wenn ich den Button klicke, dann schliesst sich der Dialog
+  let dialogRef = document.getElementById("dialog");
+  dialogRef.close();
 }
+
+// ======================= Bubbling Funktion ============================
 
 // Klick außerhalb des Bildes -> Overlay schließen
 function bubbling() {}
-
-// pfeiltaste zum swipen
+// ====================== vorwärts swipen ===============================
 
 function forwardImg() {
-  // wenn ich den button klicke, dann swipe ich nach links
+  imgArrayindex++; // index erhöhen - wir wollen zum nächsten Bild springen
+  if (imgArrayindex >= imgArray.length) {
+    // wenn der Index gleich der Länge des Arrays ist,haben wir das Ende überschritten. Dann setzen wir auf 0
+    imgArrayindex = 0; //zurück zum Bild
+  }
+  openDialog(imgArrayindex); // neues Bild anzeigen
+
   // was ist mein vorheriges Bild -> globale variable
 }
 
+// ====================== rückwärts swipen ===============================
+
 function backImg() {
-  // wenn ich den button klicke, dann swipe ich nach rechts
+  imgArrayindex--;
+  if (imgArrayindex < 0) {
+    imgArrayindex = imgArray.length - 1; // zurück zum letzen Bild
+  }
+  openDialog(imgArrayindex);
 }
 
 // ============================================================================
