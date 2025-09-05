@@ -20,42 +20,104 @@
 .mainDisplay {
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: #F7E4C3;
 }
 
 .mainDisplay h1 {
+    display: flex;
+    justify-content: center;
     font-size: 40px;
-    padding: 20px;
+    padding-top: 20px;
     color: #004F51;
 }
 
+.imageGallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+
 .thumbnailGallery {
-    height: 200px;
-    width: 200px;
+    border-radius: 8px;
+    height: 250px;
+    width: 250px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    
+}
+
+.imageGallery:hover > :not(:hover) {
+    filter: blur(5px);
+    opacity: 1;
 }
 
 .dialog {
+    background-color: #F7E4C3;
     position: absolute;
-<<<<<<< HEAD
+    border: 8px solid #004F51 ;
+    border-radius: 8px;
     top: 10%;
     left: 10%;
-    height: 75%;
-    width: 50%;
+    width: 600px;
 }
 
 
-.bigPicture img{
+.bigPicture {
     display: flex;
+    justify-content: center;
+}
+
+.bigPicture img{
+    border-radius: 8px;
     height: 500px;
     width: 500px;
-=======
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background-color: #F7E4C3;
->>>>>>> parent of 1c6c4ff (change forwardbtn + backbtn for img & add eventlistener)
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.dialogDisplay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    padding-left: 36px;
+    padding-right: 36px;
+    
+}
+
+.dialogFooter {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+
+}
+
+.btn {
+    background-color: #004F51;   /* Buttonfarbe */
+  color: #F7E4C3;             /* Textfarbe */
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #006C6F;   /* etwas heller für Interaktivität */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -66,4 +128,5 @@
     padding: 8px;
     color: #F7E4C3;
     font-weight: 700;
+    font-size: 18px;
 }

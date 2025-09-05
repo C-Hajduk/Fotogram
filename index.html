@@ -17,29 +17,26 @@
 
     <main id="mainDisplay" class="mainDisplay">
 
-        <h1>Your personal photo album</h1>
-        <!-- Bilder sollen in section eingefügt werden -->
-        <div id="imageGallery"></div>
+        <h1>My Journey in Japan </h1>
+
+        <div id="imageGallery" class="imageGallery"></div>
 
         <!-- die Bilder sollen ein HoverEffect erhalten -->
 
         <dialog id="dialog" class="dialog">
-            <header>
+            <header class="dialogDisplay">
                 <h2>Japan Bilder</h2> <!-- hier soll der Name des Bildes rein -->
-                <button aria-label="dialogClose" class="btnClose" onclick="closeDialog()">❌</button>
-
+                <button aria-label="dialogClose" class="btn" onclick="closeDialog()">close</button>
             </header>
 
             <section id="bigPicture" class="bigPicture">Big Picture></section>
 
-            <footer>
-                <button onclick="forwardImg()">Forward</button>
-                <span id="counter"></span>
-                <button onclick="backImg()">Back</button>
+            <footer class="dialogFooter">
+                <button class="btn" onclick="forwardImg()">Forward</button>
+                <span class="counterDesign" id="counter"></span>
+                <button class="btn" onclick="backImg()">Back</button>
             </footer>
         </dialog>
-
-
 
         <!-- ich kann ausserhalb des Dialog klicken und der Dialog schliesst sich -->
 
@@ -47,7 +44,7 @@
 
     <footer class="footer">
         <img src="" alt="">
-        <p>create by Christian 2025</p>
+        <p>© create by Christian 2025</p>
     </footer>
 
 </body>

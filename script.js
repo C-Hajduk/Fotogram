@@ -18,8 +18,6 @@ const imgArray = [
 
 let imgArrayindex = 0;
 
-// ======================= img bilder in HTMl erstellen ===============================
-
 // ======================= render Funktion & Template ==================================
 
 function renderImg() {
@@ -27,59 +25,61 @@ function renderImg() {
   imageGalleryRef.innerHTML = "";
 
   for (let index = 0; index < imgArray.length; index++) {
-    imageGalleryRef.innerHTML += `<img onclick="openDialog(${index})" 
-                                      class="thumbnailGallery" 
-                                      src="${imgArray[index]}" alt="">`;
+    imageGalleryRef.innerHTML += `<img onclick="openDialog(${[index]})" 
+                                    class="thumbnailGallery" src="${
+                                      imgArray[index]
+                                    }" alt="">`;
   }
 }
 
-// ==================== Overlay für das Popup ==================================
+// ==================== Dialog öffnen ==================================
 
-function renderDialog() {
-  // fuers rendern des Dialog
-}
-
-// per click auf das Bild, öffnet sich ein dialog
 function openDialog(index) {
-  // renderDialog(index);
-  let dialogRef = document.getElementById("dialog");
-  dialogRef.showModal();
+  imgArrayindex = index;
+  let dialog = document.getElementById("dialog");
+  dialog.showModal();
 
   let bigPicture = document.getElementById("bigPicture");
-  bigPicture.innerHTML += `<img src="${imgArray[index]}" alt="">`;
+  bigPicture.innerHTML = `<img src="${imgArray[index]}" alt="">`;
 
   // Zähler (z.B. "3 / 15")
   let counterRef = document.getElementById("counter");
-  counterRef.innerHTML = imgArrayindex + 1 + " / " + imgArray.length;
+  counterRef.textContent = imgArrayindex + 1 + " / " + imgArray.length;
 
-  // dialog.addEventListener("click", function (event) {
-  //   if (event.target === dialog) {
-  //     closeDialog();
-  //   }
-  // });
+  dialog.addEventListener("click", function (event) {
+    if (event.target === dialog) {
+      closeDialog();
+    }
+  });
 }
 
-// Klick auf OverlayButton = schließen
+// ======================= Dialog schließen ============================
+
 function closeDialog() {
-  // wenn ich den Button klicke, dann schliesst sich der Dialog
+  let dialogRef = document.getElementById("dialog");
+  dialogRef.close();
 }
 
 // ======================= Bubbling Funktion ============================
 
+// Klick außerhalb des Bildes -> Overlay schließen
 function bubbling() {}
-
 // ====================== vorwärts swipen ===============================
 
-function forwardImg(imgArrayindex) {
+function forwardImg() {
   imgArrayindex++; // index erhöhen - wir wollen zum nächsten Bild springen
   if (imgArrayindex >= imgArray.length) {
     // wenn der Index gleich der Länge des Arrays ist,haben wir das Ende überschritten. Dann setzen wir auf 0
     imgArrayindex = 0; //zurück zum Bild
   }
   openDialog(imgArrayindex); // neues Bild anzeigen
+
+  // was ist mein vorheriges Bild -> globale variable
 }
 
-function backImg(imgArrayindex) {
+// ====================== rückwärts swipen ===============================
+
+function backImg() {
   imgArrayindex--;
   if (imgArrayindex < 0) {
     imgArrayindex = imgArray.length - 1; // zurück zum letzen Bild
