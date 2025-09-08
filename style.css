@@ -65,8 +65,8 @@
     background-color: #F7E4C3;
     border: 8px solid #004F51 ;
     border-radius: 8px;
-    top: 10%;
-    left: 10%;
+    top: 0;
+    left: 0;
     margin: auto;
 }
 
@@ -107,7 +107,7 @@ dialog::backdrop {
     padding-bottom: 20px;
 }
 
-.btn {
+.button {
     font-size: 16px;
     font-weight: 500;
     padding: 12px 24px;
@@ -121,7 +121,7 @@ dialog::backdrop {
 }
 
 .button:hover {
-    background-color: #006C6F;   /* etwas heller für Interaktivität */
+    background-color: #006C6F;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
 }
@@ -151,5 +151,53 @@ dialog::backdrop {
     color: #004F51;
     font-size: 32px;
 }
+
+.button {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 12px 24px;
+    background-color: #004F51;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    color: #F7E4C3;             
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.headerDialog {
+    font-size: 18px;
+    color: #004F51;
+}
+
+.bigPicture img{
+    height: 350px;
+    width: 350px;
+    border-radius: 8px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.dialog {
+    position: absolute;
+    width: 600px;
+    inset: 0;
+    background-color: #F7E4C3;
+    border: 8px solid #004F51 ;
+    border-radius: 8px;
+    top: 0;
+    left: 0;
+    margin: auto;
+}
+
+.dialogDisplay {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 12px;
+    padding-left: 16px;
+    padding-right: 16px;    
+}
+
 } 
     
