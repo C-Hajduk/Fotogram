@@ -40,9 +40,8 @@ function openDialog(index) {
   dialog.showModal();
 
   let bigPicture = document.getElementById("bigPicture");
-  bigPicture.innerHTML = `<img src="${imgArray[index]}" alt="">`;
+  bigPicture.innerHTML = `<img src="${imgArray[index]}" alt="${imgArray[index]}">`;
 
-  // Zähler (z.B. "3 / 15")
   let counterRef = document.getElementById("counter");
   counterRef.textContent = imgArrayindex + 1 + " / " + imgArray.length;
 
