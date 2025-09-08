@@ -16,6 +16,24 @@ const imgArray = [
   "assets/img/Weg_zum_Gedenken_Schrein.jpg",
 ];
 
+const altTagimage = [
+  "Aussicht_Kirschblüten",
+  "Bonsai_Tempel",
+  "Fluss_Kirschblüten",
+  "Fuji",
+  "Gasshō-Zukuri-Haus",
+  "Gedenken_Schrein",
+  "Jigokudani Affenpark",
+  "Jizō-Statuen",
+  "Lichterspiel_Wald",
+  "Matcha_Tee",
+  "Mini_Wasserfall",
+  "Schrein_Garten",
+  "Tempel_hinter_Kirschblüten",
+  "Tempel_Statue",
+  "Weg_zum_Gedenken_Schrein",
+];
+
 let imgArrayindex = 0;
 
 // ======================= render Funktion & Template ==================================
@@ -28,7 +46,7 @@ function renderImg() {
     imageGalleryRef.innerHTML += `<img onclick="openDialog(${[index]})" 
                                     class="thumbnailGallery" 
                                     src="${imgArray[index]}" 
-                                    alt="${imgArray[index]}">`;
+                                    alt="${altTagimage[index]}">`;
   }
 }
 
@@ -40,7 +58,7 @@ function openDialog(index) {
   dialog.showModal();
 
   let bigPicture = document.getElementById("bigPicture");
-  bigPicture.innerHTML = `<img src="${imgArray[index]}" alt="${imgArray[index]}">`;
+  bigPicture.innerHTML = `<img src="${imgArray[index]}" alt="${altTagimage[index]}">`;
 
   let counterRef = document.getElementById("counter");
   counterRef.textContent = imgArrayindex + 1 + " / " + imgArray.length;
