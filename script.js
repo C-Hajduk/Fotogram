@@ -26,9 +26,9 @@ function renderImg() {
 
   for (let index = 0; index < imgArray.length; index++) {
     imageGalleryRef.innerHTML += `<img onclick="openDialog(${[index]})" 
-                                    class="thumbnailGallery" src="${
-                                      imgArray[index]
-                                    }" alt="">`;
+                                    class="thumbnailGallery" 
+                                    src="${imgArray[index]}" 
+                                    alt="${imgArray[index]}">`;
   }
 }
 
@@ -50,7 +50,9 @@ function openDialog(index) {
 
   let pathParts = imgArray[imgArrayindex].split("/");
   let filename = pathParts[pathParts.length - 1];
-  headlineRef.textContent = filename;
+  let filenameWithoutExt = filename.replace(/\.[^/.]+$/, "");
+  filenameWithoutExt = filenameWithoutExt.replace(/_/g, " ");
+  headlineRef.textContent = filenameWithoutExt;
 
   dialog.addEventListener("click", function (event) {
     if (event.target === dialog) {
