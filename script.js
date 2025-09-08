@@ -34,15 +34,17 @@ const altTagimage = [
   "Weg_zum_Gedenken_Schrein",
 ];
 
-let imgArrayindex = 0;
+let imgArrayindex = 0; // speichert, welches Bild gerade aktiv ist.
 
 // ======================= render Funktion & Template ==================================
 
 function renderImg() {
-  let imageGalleryRef = document.getElementById("imageGallery");
-  imageGalleryRef.innerHTML = "";
+  //definiert die Funktion, die die Galerie auf der Seite neu zeichnet
+  let imageGalleryRef = document.getElementById("imageGallery"); //sucht im HTML nach einem Element mit der ID imageGallery
+  imageGalleryRef.innerHTML = ""; //bedeutet: den alten Inhalt löschen, damit die Galiere nicht doppelt gefüllt wird.
 
   for (let index = 0; index < imgArray.length; index++) {
+    //eine Schleife: Sie läuft so oft, wie es Bilder im Array gibt
     imageGalleryRef.innerHTML += generateImgHtml(index);
   }
 }
@@ -50,9 +52,10 @@ function renderImg() {
 // ==================== Dialog öffnen ==================================
 
 function openDialog(index) {
-  imgArrayindex = index;
-  let dialog = document.getElementById("dialog");
-  dialog.showModal();
+  //Funktion zeigt ein Bild gross im Dialog an. index ist der Wert, den wir beim Klicken übergeben haben
+  imgArrayindex = index; //speichert, welches Bild aktuell angezeigt wird
+  let dialog = document.getElementById("dialog"); //sucht das HTML-Element mit der ID dialog
+  dialog.showModal(); //schowMoadal() öffnet den Dialog(so eine Art Popup-Fenster über der Seite)
 
   let bigPicture = document.getElementById("bigPicture");
   bigPicture.innerHTML = generateBigImg(index);
