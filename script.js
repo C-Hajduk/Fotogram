@@ -43,10 +43,7 @@ function renderImg() {
   imageGalleryRef.innerHTML = "";
 
   for (let index = 0; index < imgArray.length; index++) {
-    imageGalleryRef.innerHTML += `<img onclick="openDialog(${[index]})" 
-                                    class="thumbnailGallery" 
-                                    src="${imgArray[index]}" 
-                                    alt="${altTagimage[index]}">`;
+    imageGalleryRef.innerHTML += generateImgHtml(index);
   }
 }
 
@@ -58,7 +55,7 @@ function openDialog(index) {
   dialog.showModal();
 
   let bigPicture = document.getElementById("bigPicture");
-  bigPicture.innerHTML = `<img src="${imgArray[index]}" alt="${altTagimage[index]}">`;
+  bigPicture.innerHTML = generateBigImg(index);
 
   let counterRef = document.getElementById("counter");
   counterRef.textContent = imgArrayindex + 1 + " / " + imgArray.length;
@@ -84,11 +81,6 @@ function closeDialog() {
   let dialogRef = document.getElementById("dialog");
   dialogRef.close();
 }
-
-// ======================= Bubbling Funktion ============================
-
-// Klick außerhalb des Bildes -> Overlay schließen
-function bubbling() {}
 
 // ====================== vorwärts swipen ===============================
 
